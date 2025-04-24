@@ -16,6 +16,7 @@
   sys.host = "desktop";
   sys.user = "jonas";
   sys.locale = "en_US.UTF-8";
+  sys.extraLocale = "de_DE.UTF-8";
   sys.layout = "us";
   sys.time = "Europe/Berlin";
   sys.boot = {
@@ -29,41 +30,31 @@
 
   ### Profile Settings ###
 
-  profiles.hyprland.enable = true;
+  profiles.gnome.enable = true;
 
   # ...
 
   ### Custom Configuration ###
 
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-  };
-  programs.uwsm.enable = true;
+  # ...
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet -r -i --cmd 'uwsm start -S -F /run/current-system/sw/bin/Hyprland'";
-        user = "greeter";
-      };
-    };
-  };
-
-  # services.xserver.xrandrHeads = [
-  #   {
-  #     output = "DP-0";
-  #     monitorConfig = "Option \"Rotate\" \"left\"";
-  #   }
-  #   {
-  #     output = "DP-4";
-  #     primary = true;
-  #   }
-  # ];
+  services.xserver.enable = true;
+  services.xserver.xrandrHeads = [
+    {
+      output = "DP-0";
+      monitorConfig = "Option \"Rotate\" \"left\"";
+    }
+    {
+      output = "DP-4";
+      primary = true;
+    }
+  ];
 
   environment.systemPackages = with pkgs; [
     tree
+    gh
+    alacritty
+    chromium
   ];
 
   # ...
