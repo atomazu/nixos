@@ -21,7 +21,7 @@ in
   ### Configuration ###
 
   config = (
-    lib.mkIf (cfg.cinnamon.enable) ({
+    lib.mkIf (cfg.cinnamon.enable) {
       services.xserver.desktopManager.cinnamon.enable = true;
 
       home-manager.users.${config.sys.user} = lib.mkMerge [
@@ -39,7 +39,7 @@ in
 
             "org/gnome/desktop/peripherals/mouse" = {
               accel-profile = "flat";
-              speed = 0.36554621848739499;
+              speed = 0.2;
             };
 
             "org/gnome/desktop/interface" = {
@@ -50,9 +50,13 @@ in
             "org/cinnamon/desktop/background" = {
               picture-uri = "file://${../assets/binary.png}";
             };
+
+            "org/cinnamon" = {
+              panels-autohide = [ "1:true" ];
+            };
           };
         }
       ];
-    })
+    }
   );
 }
