@@ -11,11 +11,7 @@ in
   ### Options ###
 
   options.profiles.cinnamon = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable the Cinnamon profile.";
-    };
+    enable = lib.mkEnableOption "Cinnamon profile";
   };
 
   ### Configuration ###
